@@ -68,6 +68,29 @@ def get_perpendicular_component(vector_A, vector_B):
 def get_bisector(vector_A, vector_B):
     '''
     Calculate the bisector of two vectors
+    https://proofwiki.org/wiki/Angle_Bisector_Vector
     '''
     bisector = get_magnitude(vector_A)*vector_B + get_magnitude(vector_B)*vector_A
     return bisector
+
+def is_vector_endpoint_above_vector_slope(vectorA, vectorB):
+    '''
+    Check if the endpoint of vectorA is above the slope of vectorB
+    '''
+    Ax = vectorA[0]
+    Ay = vectorA[1]
+    Bx = vectorB[0]
+    By = vectorB[1]
+
+    B_slope = By / Bx
+
+    # calculate the y value of vectorB at the x value of vectorA
+    By_at_Ax = B_slope * Ax
+    
+    # if the y value of vectorA is above the y value of vectorB at the x value of vectorA, then vectorA is above vectorB
+    if Ay > By_at_Ax:
+        return True
+    else:
+        return False
+
+
